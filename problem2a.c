@@ -16,18 +16,18 @@ int main(int argc, char **argv){
   struct solution *solution = findSolution(problem, PART_A);
 
   /* Report solution */
-  /* printf("Cost of installation using antennas %d\n", solution->antennaTotal); */
-  /* printf("Cost of installation using cables %d\n", solution->cableTotal); */
+  printf("Cost of installation using antennas %d\n", solution->antennaTotal);
+  printf("Cost of installation using cables %d\n", solution->cableTotal);
 
   /* Print better choice. */
   if(solution->cableTotal < solution->antennaTotal){
-    /* printf("Cheapest technology: Cabled installation cheapest\n"); */
+    printf("Cheapest technology: Cabled installation cheapest\n"); 
     printf("c\n");
   } else if (solution->cableTotal == solution->antennaTotal){
-    /* printf("Cheapest technology: Both technologies equal cost\n"); */
+    printf("Cheapest technology: Both technologies equal cost\n");
     printf("b\n");
   } else {
-    /* printf("Cheapest technology: Radio-based installation cheapest\n"); */
+    printf("Cheapest technology: Radio-based installation cheapest\n");
     printf("r\n");
   }
 

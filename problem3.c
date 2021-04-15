@@ -58,14 +58,49 @@ void printStatistics(struct statistics *stats);
 numerator and denominator when running on the given chip type (one of OLDCHIP
 and NEWCHIP) by moving through the steps of the algorithm and counting each
 pseudocode operation. */
-void euclid(int numerator, int denominator, int chip, struct statistics *s);
+void euclid(int numerator, int denominator, int chip, struct statistics *s){
+  int b = numerator;
+  int a = denominator;
+  int t;
+  while (b!=0){
+    t = b;
+    b = a % b;
+    a = t;
+  }
+  print((numerator/a) + "/" + (denominator/b));
+
+}
 
 /* Calculates the number of operations required for the sieve of Eratosthenes
 given the numerator and denominator when running on the given chip type (one of
 OLDCHIP and NEWCHIP) by moving through the steps of the algorithm and counting
 each pseudocode operation. */
 void eratosthenes(int numerator, int denominator, int chip,
-  struct statistics *s);
+  struct statistics *s){
+    int num = numerator;
+    int den = denominator;
+    int numCandidates = min(num, den);
+    int primes[numCandidates];
+    for(int i =0; i<numCandidates; i++){
+      primes[i] = 1;
+    }
+    int i=1;
+    while (i<numCandidates){
+      i = i+1;
+      if (primes[i]){
+        int j = i+i;
+        if(j/i > 1 && j % i == 0){
+          primes[j] = 0;
+          while(num % i ==0 && den % i == 0){
+            num = num/i;
+            den = den/i;
+          }
+        }
+        j = j + i;
+
+      }
+    }
+  }
 
 int main(int argc, char **argv){
   struct chipStatistics summaryStatistics;

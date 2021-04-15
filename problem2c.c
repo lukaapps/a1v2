@@ -15,8 +15,7 @@ int main(int argc, char **argv){
   struct solution *solution = findSolution(problem, PART_C);
 
   /* Report solution */
-  /* printf("Cost of installation using mixed technologies %d\n",
-    solution->mixedTotal); */
+  printf("Cost of installation using mixed technologies %d\n", solution->mixedTotal);
   printf("%d\n", solution->mixedTotal);
 
   freeProblem(problem);

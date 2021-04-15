@@ -30,6 +30,7 @@ struct graphProblem *readProblem(FILE *file){
 
   /* First line of input is antenna cost. */
   assert(scanf("%d", &(problem->antennaCost)) == 1);
+
   /* Next line comprises number of houses and number of connections. */
   assert(scanf("%d %d", &(problem->numHouses), &(problem->numConnections))
     == 2);

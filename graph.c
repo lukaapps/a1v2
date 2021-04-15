@@ -13,6 +13,7 @@ Skeleton written by Grady Fitzpatrick for COMP20007 Assignment 1 2021
 #include "graph.h"
 #include "utils.h"
 #include "pq.h"
+#include "primalg.h"
 
 #define INITIALEDGES 32
 
@@ -84,18 +85,22 @@ void freeGraph(struct graph *g){
   free(g);
 }
 
+
 struct solution *graphSolve(struct graph *g, enum problemPart part,
   int antennaCost, int numHouses){
   struct solution *solution = (struct solution *)
     malloc(sizeof(struct solution));
   assert(solution);
   if(part == PART_A){
+
     /* IMPLEMENT 2A SOLUTION HERE */
-    solution->antennaTotal = 0;
-    solution->cableTotal = 0;
+    solution->antennaTotal = (numHouses+1) * antennaCost;
+    solution->cableTotal = prims(g, part, antennaCost, numHouses);
+
+    
   } else {
     /* IMPLEMENT 2C SOLUTION HERE */
-    solution->mixedTotal = 0;
+    solution->mixedTotal = prims(g, part, antennaCost, numHouses);
   }
   return solution;
 }
